@@ -1,0 +1,9 @@
+{
+  "name": "temporal",
+  "version": "0.1.0",
+  "description": "Temporal SDK best practices for Python, Go, TypeScript, Java, .NET, and Ruby",
+  "license": "MIT",
+  "author": {
+    "name": "Temporal Technologies"
+  }
+}
