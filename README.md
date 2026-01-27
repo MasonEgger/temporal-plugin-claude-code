@@ -69,6 +69,58 @@ The plugin provides **skills** that are automatically triggered based on context
 
 **Note**: Skills don't appear in slash command autocomplete. They're designed to activate automatically when Claude detects relevant context in your questions. You don't need to explicitly invoke them.
 
+### Example
+
+Simply ask Claude Code a question about Temporal development:
+
+```
+> Create me a money transfer application in Go using Temporal
+```
+
+Claude Code will automatically detect the Temporal + Go context and load the `go-sdk` skill, which provides:
+- Go-specific workflow and activity patterns
+- Proper context handling and error management
+- Determinism rules for Go (no sandbox - enforced via code review)
+- Testing patterns with the Go test framework
+- Observability and logging best practices
+
+The skill's knowledge is seamlessly incorporated into Claude's response without any manual invocation required.
+
+```output
+
+╭─── Claude Code v2.1.20 ──────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting        │
+│                 Welcome back Mason!                │ started                 │
+│                                                    │ Ask Claude to create a… │
+│                       ▐▛███▜▌                      │ ─────────────────────── │
+│                      ▝▜█████▛▘                     │ Recent activity         │
+│                        ▘▘ ▝▝                       │ No recent activity      │
+│                                                    │                         │
+│      Opus 4.5 · API Usage Billing · Temporal       │                         │
+│      Technologies                                  │                         │
+│                       ~/tmp                        │                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+❯ Create me a money transfer application in Go using Temporal 
+
+⏺ I'll invoke the Temporal Go SDK skill to get the best practices, then enter
+  plan mode to design the implementation approach.
+
+⏺ Skill(temporal:go-sdk)
+  ⎿  Successfully loaded skill
+
+⏺ Entered plan mode
+  Claude is now exploring and designing an implementation approach.
+
+⏺ I have the Temporal Go SDK best practices loaded. Now let me design a plan for
+   the money transfer application.
+
+  Since this is a new project (not an existing codebase), I'll proceed directly
+  to designing the implementation approach based on Temporal best practices and
+  the user's CLAUDE.md guidelines.
+  ⎿  Interrupted · What should Claude do instead?
+```
+
 ## What's Included
 
 Each SDK skill covers:
