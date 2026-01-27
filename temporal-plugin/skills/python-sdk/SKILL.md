@@ -12,16 +12,22 @@ The Temporal Python SDK (`temporalio`) provides a fully async, type-safe approac
 
 ## Quick Start
 
+**activities/greet.py** - Activity definitions (separate file for performance):
 ```python
-import asyncio
-from datetime import timedelta
-from temporalio import activity, workflow
-from temporalio.client import Client
-from temporalio.worker import Worker
+from temporalio import activity
 
 @activity.defn
 async def greet(name: str) -> str:
     return f"Hello, {name}!"
+```
+
+**workflows/greeting.py** - Workflow definition (import activities through sandbox):
+```python
+from datetime import timedelta
+from temporalio import workflow
+
+with workflow.unsafe.imports_passed_through():
+    from activities.greet import greet
 
 @workflow.defn
 class GreetingWorkflow:
@@ -30,6 +36,16 @@ class GreetingWorkflow:
         return await workflow.execute_activity(
             greet, name, schedule_to_close_timeout=timedelta(seconds=30)
         )
+```
+
+**worker.py** - Worker setup (imports both):
+```python
+import asyncio
+from temporalio.client import Client
+from temporalio.worker import Worker
+
+from activities.greet import greet
+from workflows.greeting import GreetingWorkflow
 
 async def main():
     client = await Client.connect("localhost:7233")
