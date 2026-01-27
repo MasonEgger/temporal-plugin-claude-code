@@ -1,6 +1,7 @@
 ---
 name: typescript-sdk
-description: "This skill should be used when the user asks to 'create a Temporal workflow in TypeScript', 'write a TypeScript activity', 'use @temporalio', 'fix TypeScript workflow determinism', or mentions 'Temporal TypeScript SDK' or 'Node.js Temporal'. Provides TypeScript-specific patterns and bundling guidance."
+description: This skill should be used when the user asks to 'create a Temporal workflow in TypeScript', 'write a TypeScript activity', 'use @temporalio', 'fix TypeScript workflow determinism', or mentions 'Temporal TypeScript SDK' or 'Node.js Temporal'. Provides TypeScript-specific patterns and bundling guidance.
+version: 0.1.0
 ---
 
 # Temporal TypeScript SDK Best Practices

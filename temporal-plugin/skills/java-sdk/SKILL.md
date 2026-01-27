@@ -1,6 +1,7 @@
 ---
 name: java-sdk
-description: "This skill should be used when the user asks to 'create a Temporal workflow in Java', 'write a Java activity', 'use io.temporal', 'fix Java workflow determinism', 'debug workflow replay', 'Java workflow logging', or mentions 'Temporal Java SDK'. Provides Java-specific patterns, interface design, enterprise integration, and observability guidance."
+description: This skill should be used when the user asks to 'create a Temporal workflow in Java', 'write a Java activity', 'use io.temporal', 'fix Java workflow determinism', 'debug workflow replay', 'Java workflow logging', or mentions 'Temporal Java SDK'. Provides Java-specific patterns, interface design, enterprise integration, and observability guidance.
+version: 0.1.0
 ---
 
 # Temporal Java SDK Best Practices

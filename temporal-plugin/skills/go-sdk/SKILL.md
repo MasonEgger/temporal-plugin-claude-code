@@ -1,6 +1,7 @@
 ---
 name: go-sdk
-description: "This skill should be used when the user asks to 'create a Temporal workflow in Go', 'write a Go activity', 'use go.temporal.io', 'fix Go workflow determinism', 'debug workflow replay', 'Go workflow logging', or mentions 'Temporal Go SDK'. Provides Go-specific patterns, context handling, selector usage, and observability guidance."
+description: This skill should be used when the user asks to 'create a Temporal workflow in Go', 'write a Go activity', 'use go.temporal.io', 'fix Go workflow determinism', 'debug workflow replay', 'Go workflow logging', or mentions 'Temporal Go SDK'. Provides Go-specific patterns, context handling, selector usage, and observability guidance.
+version: 0.1.0
 ---
 
 # Temporal Go SDK Best Practices

@@ -1,6 +1,7 @@
 ---
 name: ruby-sdk
-description: "This skill should be used when the user asks to 'create a Temporal workflow in Ruby', 'write a Ruby activity', 'use temporalio gem', 'fix Ruby workflow determinism', 'debug workflow replay', 'Ruby workflow logging', or mentions 'Temporal Ruby SDK' or 'Rails Temporal'. Provides Ruby-specific patterns, Fiber scheduler constraints, and Rails integration guidance."
+description: This skill should be used when the user asks to 'create a Temporal workflow in Ruby', 'write a Ruby activity', 'use temporalio gem', 'fix Ruby workflow determinism', 'debug workflow replay', 'Ruby workflow logging', or mentions 'Temporal Ruby SDK' or 'Rails Temporal'. Provides Ruby-specific patterns, Fiber scheduler constraints, and Rails integration guidance.
+version: 0.1.0
 ---
 
 # Temporal Ruby SDK Best Practices

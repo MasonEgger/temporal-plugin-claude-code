@@ -1,6 +1,7 @@
 ---
 name: python-sdk
-description: "This skill should be used when the user asks to 'create a Temporal workflow in Python', 'write a Python activity', 'use temporalio', 'fix Python workflow determinism', 'debug workflow replay', 'Python workflow logging', or mentions 'Temporal Python SDK'. Provides Python-specific patterns, asyncio guidance, sandbox constraints, and observability guidance."
+description: This skill should be used when the user asks to 'create a Temporal workflow in Python', 'write a Python activity', 'use temporalio', 'fix Python workflow determinism', 'debug workflow replay', 'Python workflow logging', or mentions 'Temporal Python SDK'. Provides Python-specific patterns, asyncio guidance, sandbox constraints, and observability guidance.
+version: 0.1.0
 ---
 
 # Temporal Python SDK Best Practices
