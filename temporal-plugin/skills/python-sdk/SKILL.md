@@ -16,18 +16,21 @@ The Temporal Python SDK (`temporalio`) provides a fully async, type-safe approac
 ```python
 from temporalio import activity
 
+
 @activity.defn
-async def greet(name: str) -> str:
+def greet(name: str) -> str:
     return f"Hello, {name}!"
 ```
 
 **workflows/greeting.py** - Workflow definition (import activities through sandbox):
 ```python
 from datetime import timedelta
+
 from temporalio import workflow
 
 with workflow.unsafe.imports_passed_through():
     from activities.greet import greet
+
 
 @workflow.defn
 class GreetingWorkflow:
@@ -38,26 +41,59 @@ class GreetingWorkflow:
         )
 ```
 
-**worker.py** - Worker setup (imports both):
+**worker.py** - Long-running Worker process:
 ```python
 import asyncio
+import concurrent.futures
+
 from temporalio.client import Client
 from temporalio.worker import Worker
 
 from activities.greet import greet
 from workflows.greeting import GreetingWorkflow
 
-async def main():
-    client = await Client.connect("localhost:7233")
-    async with Worker(client, task_queue="greeting-queue",
-                      workflows=[GreetingWorkflow], activities=[greet]):
-        result = await client.execute_workflow(
-            GreetingWorkflow.run, "World",
-            id="greeting-workflow", task_queue="greeting-queue"
-        )
-        print(result)
 
-asyncio.run(main())
+async def main():
+    client = await Client.connect("localhost:7233", namespace="default")
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=100) as activity_executor:
+        worker = Worker(
+            client,
+            task_queue="greeting-queue",
+            workflows=[GreetingWorkflow],
+            activities=[greet],
+            activity_executor=activity_executor,
+        )
+        await worker.run()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+**starter.py** - Client code to start a Workflow:
+```python
+import asyncio
+
+from temporalio.client import Client
+
+from workflows.greeting import GreetingWorkflow
+
+
+async def main():
+    client = await Client.connect("localhost:7233", namespace="default")
+
+    result = await client.execute_workflow(
+        GreetingWorkflow.run,
+        "World",
+        id="greeting-workflow",
+        task_queue="greeting-queue",
+    )
+    print(result)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
 ```
 
 ## Key Concepts
@@ -79,8 +115,8 @@ See `references/sync-vs-async.md` for detailed guidance on choosing between sync
 
 ### Worker Setup
 - Connect client, create Worker with workflows and activities
-- Use `async with Worker(...)` context manager
-- Activities can specify custom executor
+- Call `await worker.run()` to start the long-running Worker process
+- Use `ThreadPoolExecutor` as `activity_executor` for sync activities
 
 ## Why Determinism Matters: History Replay
 
