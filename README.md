@@ -1,5 +1,7 @@
 # Temporal Plugin for Claude Code
 
+# DO NOT USE! THIS IS NOT OFFICIAL AND WAS A PROOF OF CONCEPT! THERE IS NO VALIDATION THIS IS CORRECT (ALTHOUGH FROM MY TESTING IT'S PRETTY CLOSE)
+
 > **Prototype / Unofficial**: This is an experimental plugin and is NOT an official Temporal product. Use at your own discretion. Feedback and contributions welcome.
 
 A Claude Code plugin providing Temporal SDK best practices, patterns, and guidance for all supported languages.
